@@ -1,0 +1,105 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+
+import '../Apis/api_constants/api_key_constants.dart';
+import '../Apis/api_methods/api_methods.dart';
+import '../Apis/api_models/get_response_singup_model.dart';
+import '../common/ShowToast.dart';
+
+class SupportController extends GetxController{
+  RxBool showProgressbar=false.obs;
+  TextEditingController emailPhoneController=TextEditingController();
+  TextEditingController phoneController=TextEditingController();
+  TextEditingController fullNameController=TextEditingController();
+  TextEditingController messageController=TextEditingController();
+
+
+  FocusNode focusEmail = FocusNode();
+  FocusNode focusPhone = FocusNode();
+  FocusNode focusMessage = FocusNode();
+  FocusNode focusFullName=FocusNode();
+  final count=0.obs;
+  final isEmail = false.obs;
+  final isPhone = false.obs;
+  final isFullName=true.obs;
+  final isMessage=false.obs;
+  final hide = true.obs;
+
+  final formKey = GlobalKey<FormState>();
+
+  Map<String, dynamic> bodyParamsForSubmitRegistrationForm = {};
+  SignUpModel? getSingUpModel;
+
+  @override
+  void onInit() {
+    super.onInit();
+    startListener();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+  increaseCount(){
+    count.value=count.value++;
+  }
+  void startListener() {
+    focusFullName.addListener(onFocusChange);
+    focusEmail.addListener(onFocusChange);
+    focusPhone.addListener(onFocusChange);
+    focusMessage.addListener(onFocusChange);
+  }
+
+  void onFocusChange() {
+    isFullName.value = focusFullName.hasFocus;
+    isEmail.value = focusEmail.hasFocus;
+    isPhone.value = focusPhone.hasFocus;
+    isMessage.value = focusMessage.hasFocus;
+
+  }
+
+  clickOnEyeButton() {
+    hide.value = !hide.value;
+  }
+
+
+  changeProgressbarStatus(bool value){
+    showProgressbar.value=value;
+  }
+  String generateRandomString(int len) {
+    var r = Random();
+    return String.fromCharCodes(List.generate(len, (index) => r.nextInt(33) + 89));
+  }
+  Future<void> callingSubmitRegistrationForm() async {
+    bodyParamsForSubmitRegistrationForm = {
+      ApiKeyConstants.fullName:fullNameController.text.toString(),
+      ApiKeyConstants.email: emailPhoneController.text.toString(),
+      ApiKeyConstants.message: messageController.text.toString(),
+      ApiKeyConstants.mobile:phoneController.text.toString(),
+      ApiKeyConstants.registerId: generateRandomString(25),
+
+    };
+    print("bodyParamsForGetEducationLevel:::::$bodyParamsForSubmitRegistrationForm");
+    getSingUpModel = await ApiMethods.submitRegistrationForm(
+        bodyParams: bodyParamsForSubmitRegistrationForm);
+    if (getSingUpModel!.status!="0"??false ) {
+      changeProgressbarStatus(false);
+      print("Registration Successfully complete...");
+      showToastMessage("Registration Successfully complete...");
+      Get.back();
+    }else{
+      print("Registration Failed....");
+      changeProgressbarStatus(false);
+      showToastMessage(getSingUpModel!.message!);
+    }
+  }
+
+
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1063601032148",
+    "project_id": "bluecrown-8bdda",
+    "storage_bucket": "bluecrown-8bdda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063601032148:android:ce611d130f8ccacf752441",
+        "android_client_info": {
+          "package_name": "com.bluecrown.bluecrown"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9yvzVugPlIC1NPxZc9CfB06nt-oKv-8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

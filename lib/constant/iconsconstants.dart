@@ -1,0 +1,37 @@
+class IconsConstants {
+  static const String splashIcon='assets/icons/splashlogo.png';
+  static const String googleIcon='assets/icons/google.png';
+  static const String smsIcon='assets/icons/smsIcon.png';
+  static const String emailIcon='assets/icons/email.png';
+  static const String listIcon='assets/icons/list.png';
+  static const String list1Icon='assets/icons/list1.png';
+  static const String clubsIcon='assets/icons/clubs.png';
+  static const String homeIcon='assets/icons/home.png';
+  static const String friendsIcon='assets/icons/friends.png';
+  static const String moreIcon='assets/icons/more.png';
+  static const String wordRobeIcon='assets/icons/wordrobe.png';
+  static const String scanIcon='assets/icons/scan.png';
+  static const String profileIcon='assets/icons/profile.png';
+  static const String crowneIcon='assets/icons/crowne.png';
+  static const String calenderIcon='assets/icons/calender.png';
+  static const String timeIcon='assets/icons/time.png';
+  static const String doneIcon='assets/icons/done.png';
+  static const String locationIcon='assets/icons/location.png';
+  static const String addIcon='assets/icons/add.png';
+  static const String searchIcon='assets/icons/search.png';
+  static const String filterIcon='assets/icons/filter.png';
+  static const String checkIcon='assets/icons/check.png';
+  static const String plusIcon='assets/icons/plus.png';
+  static const String minusIcon='assets/icons/minus.png';
+  static const String circleIcon='assets/icons/circle.png';
+  static const String tableIcon='assets/icons/table.png';
+  static const String subCrownIcon='assets/icons/subcrown.png';
+  static const String historyIcon='assets/icons/history.png';
+  static const String dateIcon='assets/icons/date.png';
+  static const String notificationIcon='assets/icons/notification_icon.jpg';
+  static const String passwordIcon='assets/icons/password_icon.jpg';
+  static const String userIcon='assets/icons/profile_icon.jpg';
+  static const String supportIcon='assets/icons/support_icon.jpg';
+  static const String termsIcon='assets/icons/terms_icon.jpg';
+  static const String privacyIcon='assets/icons/privacy_icon.jpg';
+}

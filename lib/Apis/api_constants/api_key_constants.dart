@@ -1,0 +1,53 @@
+class ApiKeyConstants {
+  static const String fullName = 'full_name';
+  static const String firstName = 'first_name';
+  static const String lastName = 'last_name';
+  static const String email = 'email';
+  static const String mobile = 'mobile';
+  static const String password = 'password';
+  static const String type='type';
+  static const String dob = 'dob';
+  static const String gender = 'gender';
+  static const String message = 'message';
+  static const String age = 'age';
+  static const String category = 'category';
+  static const String address='address';
+  static const String userCategory='user_category';
+  static const String lat = 'lat';
+  static const String lon = 'lon';
+  static const String registerId='register_id';
+  static const String request='request';
+  static const String userId = 'user_id';
+  static const String otherUserId='other_user_id';
+  static const String postId='post_id';
+  static const String productId = 'product_id';
+  static const String otp = 'otp';
+  static const String oldPassword = 'old_pass';
+  static const String newPassword='new_pass';
+  static const String token = 'token';
+  static const String comment='comment';
+  static const String image='image';
+  static const String quantity='quantity';
+  static const String cartId='cart_id';
+  static const String description='description';
+  static const String imageList='image[]';
+  static const String location='location';
+  static const String rating='rating';
+  static const String feedback='feedback';
+  static const String eventId='event_id';
+  static const String friendsId='friends_id';
+  static const String name='name';
+  static const String style='style';
+  static const String fromDate='from_date';
+  static const String toDate='to_date';
+  static const String minAge='min_age';
+  static const String maxAge='max_age';
+  static const String points='points';
+  static const String fromTime='from_time';
+  static const String clubId='club_id';
+  static const String qrCode='qrcode';
+  static const String entranceCost='entrance_cost';
+  static const String totalPeople='total_people';
+
+
+}
