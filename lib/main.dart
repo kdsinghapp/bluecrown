@@ -3,6 +3,7 @@ import 'package:bluecrown/Activity/ChooseEventActivity.dart';
 import 'package:bluecrown/Activity/ClubAllEventListActivity.dart';
 import 'package:bluecrown/Activity/CreateQrActivity.dart';
 import 'package:bluecrown/Activity/LoginTypeActivity.dart';
+import 'package:bluecrown/Activity/MyPurchasingEventActivity.dart';
 import 'package:bluecrown/Activity/OtpActivity.dart';
 import 'package:bluecrown/Activity/QrScannerActivity.dart';
 import 'package:bluecrown/Activity/UsePointEventsActivity.dart';
@@ -16,6 +17,7 @@ import 'Activity/AdminWardrobeActivity.dart';
 import 'Activity/ChangeEventActivity.dart';
 import 'Activity/ChangePasswordActivity.dart';
 import 'Activity/ClubAllHangerListActivity.dart';
+import 'Activity/ClubPurchasedUserActivity.dart';
 import 'Activity/CreateWardrobeQrCodeActivity.dart';
 import 'Activity/EnterEventDetailActivity.dart';
 import 'Activity/EventDetailActivity.dart';
@@ -24,6 +26,7 @@ import 'Activity/ListActivity.dart';
 import 'Activity/LoginActivity.dart';
 import 'Activity/MainActivity.dart';
 import 'Activity/MyBookingEventActivity.dart';
+import 'Activity/MyWalletHistoryActivity.dart';
 import 'Activity/NewPasswordActivity.dart';
 import 'Activity/NotificationActivity.dart';
 import 'Activity/PublishEventActivity.dart';
@@ -101,6 +104,9 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/usePointEventsActivity', page:()=> const UsePointEventsActivity()),
           GetPage(name: '/usePointClubsActivity', page:()=> const UsePointClubsActivity()),
           GetPage(name: '/usePointsActivity', page:()=> const UserPointsActivity()),
+          GetPage(name: '/myPurchasingEventActivity', page:()=> const MyPurchasingEventActivity()),
+          GetPage(name: '/clubPurchasedUserActivity', page:()=> const ClubPurchasedUserActivity()),
+          GetPage(name: '/myWalletHistoryActivity', page:()=> const MyWalletHistoryActivity()),
 
       ],
       theme:Styles.themeData(false, context),

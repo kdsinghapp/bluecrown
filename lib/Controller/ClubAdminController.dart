@@ -46,6 +46,12 @@ class ClubAdminController extends GetxController{
     };
     Get.toNamed('/bookingRequestActivity',parameters: data);
   }
+  openClubPurchasedUserActivity(){
+    Map<String,String> data={
+      'clubId':userData.result!.id!
+    };
+    Get.toNamed('/clubPurchasedUserActivity',parameters: data);
+  }
   openCreateWardrobeQrCodeActivity(){
     Map<String,String> data={
       'clubId':userData.result!.id!,

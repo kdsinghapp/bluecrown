@@ -219,7 +219,7 @@ class _NotificationState extends State<NotificationActivity> {
                   children: [
                     const Expanded(
                         flex: 1,
-                        child: Icon(Icons.notification_important,size: 15,)),
+                        child: Center(child: Icon(Icons.notification_important,size: 25,))),
                     Expanded(
                         flex: 5,
                         child: Column(

@@ -144,10 +144,10 @@ class _MainListState extends State<MainListActivity>{
                           padding: EdgeInsets.only(left: 30.px),
                           child: Text(item.name!,style: MyTextStyle.titleStyle16bw,),
                         ),
-                        Padding(
-                          padding:  EdgeInsets.only(right: 30.px),
-                          child: Text("100m",style: MyTextStyle.titleStyle16bw,),
-                        ),
+                        // Padding(
+                        //   padding:  EdgeInsets.only(right: 30.px),
+                        //   child: Text("100m",style: MyTextStyle.titleStyle16bw,),
+                        // ),
                       ],
                     )
                 )

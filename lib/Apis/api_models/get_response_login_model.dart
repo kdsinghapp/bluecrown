@@ -7,7 +7,7 @@ class LogInModel {
 
   LogInModel.fromJson(Map<String, dynamic> json) {
     result =
-    json['result'] != null ? Result.fromJson(json['result']) : null;
+    json['status'] == '1' ? Result.fromJson(json['result']) : null;
     message = json['message'];
     status = json['status'];
   }

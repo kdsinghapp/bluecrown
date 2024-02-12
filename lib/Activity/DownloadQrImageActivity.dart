@@ -221,6 +221,7 @@ class _DownloadQrImageState extends State<DownloadQrImageActivity> {
     final ByteData byteData = await rootBundle.load(IconsConstants.scanIcon,);
     ui.decodeImageFromList(byteData.buffer.asUint8List(), completer.complete);
     return completer.future;
+
   }
 
   void ShowCapturedWidget(BuildContext context, Uint8List capturedImage) async{

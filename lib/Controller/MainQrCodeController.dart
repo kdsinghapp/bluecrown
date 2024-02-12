@@ -53,7 +53,7 @@ class MainQrCodeController extends GetxController {
     }}
 
 
-    Future<void> callingChangePasswordInForm(String qrCode) async {
+    Future<void> callingScanEventQrForEarnPointsForm(String qrCode) async {
       bodyParamsForScanEventQrForm = {
         ApiKeyConstants.userId: userData.result!.id,
         ApiKeyConstants.qrCode: qrCode,

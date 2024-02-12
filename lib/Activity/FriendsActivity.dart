@@ -1,3 +1,4 @@
+import 'package:bluecrown/Activity/LocalNotification.dart';
 import 'package:bluecrown/Apis/api_models/get_response_getfriends_model.dart';
 import 'package:bluecrown/Controller/FriendsController.dart';
 import 'package:bluecrown/Tool/MyTextStyle.dart';
@@ -170,6 +171,8 @@ class _FriendsState extends State<FriendsActivity>{
             return GestureDetector(
               onTap: () {
                 //controller.addUsers(controller.filterUsersList[index]);
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                // WaterReminderHomePage()));
               },
               child: Container(
                   height: 60.px,

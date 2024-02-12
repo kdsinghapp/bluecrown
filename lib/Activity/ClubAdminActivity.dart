@@ -28,46 +28,6 @@ class _ClubAdminState extends State<ClubAdminActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:primary3Color ,
-     /* appBar: AppBar(
-        backgroundColor: primary3Color,
-        elevation: 0.px,
-        leading: SizedBox(
-          height: 40.px,
-          width: 40.px,
-          child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.px))
-              ),
-              color: editTextButton,
-              margin: EdgeInsets.all(10.px),
-              child: Padding(
-                padding:  EdgeInsets.only(left: 3.px),
-                child: IconButton(onPressed: (){
-                  Get.back();
-                },
-                    icon: const Icon(Icons.arrow_back_ios,size: 20,color: textColor,)
-                ),
-              )
-          ),
-        ),
-        actions: [
-          Padding(
-            padding:  EdgeInsets.only(left: 5.px,right: 15.px,top: 10.px,bottom: 10.px),
-            child: GestureDetector(
-                onTap:(){
-                  controller.openBookingRequestActivity();
-                },
-                child: Column(
-                  children: [
-                    Text('Booking',style: MyTextStyle.titleStyle14b,),
-                    Icon(Icons.person_add_alt_rounded,size: 30.px,color: primaryColor,),
-                   // Image.asset(IconsConstants.profileIcon,height: 30.px,width: 30.px,),
-                  ],
-                )
-            ),
-          ),
-        ],
-      ),*/
       bottomNavigationBar:
       Padding(
         padding:  EdgeInsets.only(left: 20.px,right: 20.px,bottom: 5.px),
@@ -133,6 +93,21 @@ class _ClubAdminState extends State<ClubAdminActivity> {
                               controller.openCreateWardrobeQrCodeActivity();
                               },
                             child: Image.asset(IconsConstants.wordRobeIcon,height: 35.px,width: 35.px,fit: BoxFit.fill,)),
+                      ),
+                      Padding(
+                        padding:  EdgeInsets.only(left: 5.px,right: 5.px,top: 10.px,bottom: 10.px),
+                        child: GestureDetector(
+                            onTap:(){
+                              controller.openClubPurchasedUserActivity();
+                            },
+                            child: Column(
+                              children: [
+                                Icon(Icons.person_add_alt_rounded,size: 25.px,color: primaryColor,),
+                                Text('Purchase',style: MyTextStyle.titleStyle12b,),
+                                // Image.asset(IconsConstants.profileIcon,height: 30.px,width: 30.px,),
+                              ],
+                            )
+                        ),
                       ),
                       Padding(
                         padding:  EdgeInsets.only(left: 5.px,right: 15.px,top: 10.px,bottom: 10.px),

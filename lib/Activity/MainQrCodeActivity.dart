@@ -207,7 +207,7 @@ class _MainQrCodeAppState extends State<MainQrCodeActivity> {
                       // controller?.dispose();
                       Get.back();
                       mainController.showProgressbar(true);
-                      mainController.callingChangePasswordInForm(result!.code!);
+                      mainController.callingScanEventQrForEarnPointsForm(result!.code!);
                       result=null;
                       setState(() {
                         getData=0;

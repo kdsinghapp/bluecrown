@@ -25,41 +25,39 @@ class _UsePointClubsState extends State<UsePointClubsActivity>{
   Widget build(BuildContext context){
     return Scaffold(
         backgroundColor: primary3Color,
+        appBar: AppBar(
+          backgroundColor: primary3Color,
+          elevation: 0.px,
+          leading: SizedBox(
+            height: 40.px,
+            width: 40.px,
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.px))
+                ),
+                color: editTextButton,
+                margin: EdgeInsets.all(10.px),
+                child: Padding(
+                  padding:  EdgeInsets.only(left: 3.px),
+                  child: IconButton(onPressed: (){
+                    Get.back();
+                  },
+                      icon: const Icon(Icons.arrow_back_ios,size: 20,color: textColor,)
+                  ),
+                )
+            ),
+          ),
+          title: Center(
+            child: Padding(
+              padding:  EdgeInsets.only(right: 40.px),
+              child: Text('Choose Clubs',style: MyTextStyle.titleStyle20bb,),
+            ),
+          ),
+        ),
         body:
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SafeArea(
-                child: Padding(
-                    padding:  EdgeInsets.only(left: 15.px,right: 15.px,top: 2.px),
-                    child:Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        /* Padding(
-                          padding:  EdgeInsets.only(left: 5.px,right: 5.px,top: 10.px,bottom: 0.px),
-                          child: GestureDetector(
-                            onTap:(){},
-                            child: Icon(Icons.search,size: 30.px,),
-                            // child: Image.asset(IconsConstants.searchIcon,height: 25.px,width: 25.px,fit: BoxFit.fill,)
-                          ),
-                        ),*/
-                        Padding(
-                          padding:  EdgeInsets.only(left: 5.px,right: 5.px,top: 5.px,bottom: 0.px),
-                          child: GestureDetector(
-                              onTap:(){},
-                              child: Image.asset(IconsConstants.profileIcon,height: 30.px,width: 30.px,fit: BoxFit.fill,)
-                          ),
-                        ),
-
-                      ],
-                    )
-                )
-
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20.px),
-              child: Text('Choose Clubs',style: MyTextStyle.titleStyle16bb,),
-            ),
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -127,10 +125,10 @@ class _UsePointClubsState extends State<UsePointClubsActivity>{
                           padding: EdgeInsets.only(left: 30.px),
                           child: Text(item.fullName!,style: MyTextStyle.titleStyle14bw,),
                         ),
-                        Padding(
-                          padding:  EdgeInsets.only(right: 30.px),
-                          child: Text("100m",style: MyTextStyle.titleStyle14bw,),
-                        ),
+                        // Padding(
+                        //   padding:  EdgeInsets.only(right: 30.px),
+                        //   child: Text("100m",style: MyTextStyle.titleStyle14bw,),
+                        // ),
                       ],
                     )
                 )

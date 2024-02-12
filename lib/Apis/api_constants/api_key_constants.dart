@@ -45,6 +45,7 @@ class ApiKeyConstants {
   static const String points='points';
   static const String fromTime='from_time';
   static const String clubId='club_id';
+  static const String amount='amount';
   static const String qrCode='qrcode';
   static const String entranceCost='entrance_cost';
   static const String totalPeople='total_people';

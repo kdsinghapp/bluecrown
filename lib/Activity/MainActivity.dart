@@ -241,7 +241,7 @@ class _HomeState extends State<HomeActivity>{
                             padding:  EdgeInsets.only(left: 5.px,right: 5.px,top: 10.px,bottom: 10.px),
                             child: GestureDetector(
                                 onTap:(){ controller.openPointActivity();},
-                                child: Image.asset(IconsConstants.crowneIcon,height: 30.px,width: 30.px,fit: BoxFit.fill,)
+                                child: Image.asset(IconsConstants.subCrownIcon,height: 30.px,width: 30.px,fit: BoxFit.fill,)
                             ),
                           ),
                         ],
@@ -366,10 +366,10 @@ class _HomeState extends State<HomeActivity>{
                           padding: EdgeInsets.only(left: 30.px),
                           child: Text(item.fullName!,style: MyTextStyle.titleStyle14bw,),
                         ),
-                        Padding(
-                          padding:  EdgeInsets.only(right: 30.px),
-                          child: Text("100m",style: MyTextStyle.titleStyle14bw,),
-                        ),
+                        // Padding(
+                        //   padding:  EdgeInsets.only(right: 30.px),
+                        //   child: Text("100m",style: MyTextStyle.titleStyle14bw,),
+                        // ),
                       ],
                     )
                 )

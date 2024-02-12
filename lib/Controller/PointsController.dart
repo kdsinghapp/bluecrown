@@ -1,16 +1,12 @@
 import 'dart:convert';
 
-import 'package:bluecrown/Activity/ClubActivity.dart';
 import 'package:bluecrown/Activity/MainQrCodeActivity.dart';
-import 'package:bluecrown/Activity/MineOfferActivity.dart';
 import 'package:bluecrown/Apis/api_constants/api_key_constants.dart';
 import 'package:bluecrown/constant/stringconstants.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Activity/HowToEarnPointsActivity.dart';
-import '../Activity/UsePointClubsActivity.dart';
-import '../Activity/UsePointsActivity.dart';
 import '../Apis/api_methods/api_methods.dart';
 import '../Apis/api_models/get_response_login_model.dart';
 import '../common/ShowToast.dart';

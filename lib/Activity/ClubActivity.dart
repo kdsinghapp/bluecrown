@@ -127,10 +127,10 @@ class _ClubListState extends State<ClubActivity>{
                           padding: EdgeInsets.only(left: 30.px),
                           child: Text(item.fullName!,style: MyTextStyle.titleStyle14bw,),
                         ),
-                        Padding(
-                          padding:  EdgeInsets.only(right: 30.px),
-                          child: Text("100m",style: MyTextStyle.titleStyle14bw,),
-                        ),
+                        // Padding(
+                        //   padding:  EdgeInsets.only(right: 30.px),
+                        //   child: Text("100m",style: MyTextStyle.titleStyle14bw,),
+                        // ),
                       ],
                     )
                 )

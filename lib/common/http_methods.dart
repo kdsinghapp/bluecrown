@@ -86,7 +86,7 @@ class MyHttp {
         void Function(int)? checkResponse,String? userToken }) async {
     Map<String, String> authorization = {};
     //Authorization
-    authorization = {"Authorization": 'Bearer $userToken'??'', 'Accept': 'application/json'};
+    authorization = {"Authorization": 'Bearer ${userToken ?? ''}', 'Accept': 'application/json'};
     if (kDebugMode) print("URL:: $url");
     if (kDebugMode) print("TOKEN:: $authorization");
     if (kDebugMode) print("bodyParams:: ${bodyParams ?? {}}");

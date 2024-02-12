@@ -49,17 +49,11 @@ class _UsePointEventsState extends State<UsePointEventsActivity> {
           ),
         ),
         title: Center(
-          child: Text('User Points',style: MyTextStyle.titleStyle20bb,),
-        ),
-        actions: [
-          Padding(
-            padding:  EdgeInsets.only(left: 5.px,right: 15.px,top: 10.px,bottom: 10.px),
-            child: GestureDetector(
-                onTap:(){},
-                child: Image.asset(IconsConstants.profileIcon,height: 30.px,width: 30.px,)
-            ),
+          child: Padding(
+            padding:  EdgeInsets.only(right: 40.px),
+            child: Text('User Points',style: MyTextStyle.titleStyle20bb,),
           ),
-        ],
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -104,7 +98,8 @@ class _UsePointEventsState extends State<UsePointEventsActivity> {
                           child: Image.asset(IconsConstants.subCrownIcon, fit: BoxFit.fill,),
                         ),
                         SizedBox(width: 5.px,),
-                        Text(controller.parameterData['points']??'0', style: MyTextStyle.titleStyle16bb,textAlign: TextAlign.center,),
+                        Obx(() =>Text(controller.walletAmount.value, style: MyTextStyle.titleStyle16bb,textAlign: TextAlign.center,),)
+
                       ],
                     ),
                   )
@@ -211,7 +206,7 @@ class _UsePointEventsState extends State<UsePointEventsActivity> {
           PublishMyEventResult item=controller.publishMyEventModel!.result![index];
           return GestureDetector(
             onTap: (){
-              controller.openUsePointActivity(item.points!);
+              controller.openUsePointActivity(item.points!,item.id!);
             },
             child: Padding(
               padding: EdgeInsets.only(top: 10.px,bottom: 10.px),

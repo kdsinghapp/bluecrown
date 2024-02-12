@@ -86,13 +86,13 @@ class _WardrobeState extends State<WardrobeActivity> {
                 title: Text(StringConstants.currentJacket,style: MyTextStyle.titleStyle16bb,),
               ),
               SizedBox(height: 30.px,),
-              ListTile(
+             /* ListTile(
                 onTap: (){
                   controller.openHistoricActivity();
                 },
                 leading: Image.asset(IconsConstants.historyIcon,height: 50.px,width: 50.px,),
                 title: Text(StringConstants.history,style: MyTextStyle.titleStyle16bb,),
-              ),
+              ),   */
 
               //SizedBox(height: 20.px,),
 

@@ -1,6 +1,9 @@
 import 'dart:io';
 
 
+import 'package:bluecrown/Apis/api_models/get_addpurchaseevent_model.dart';
+import 'package:bluecrown/Apis/api_models/get_clubpurchaseduser_model.dart';
+import 'package:bluecrown/Apis/api_models/get_mywallethistory_model.dart';
 import 'package:bluecrown/Apis/api_models/get_responce_scaneventqr_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_addclubcostomer_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_addevent_model.dart';
@@ -19,11 +22,13 @@ import 'package:bluecrown/Apis/api_models/get_response_getfriends_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_getnotification_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_getwardrobeusers_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_howtoearnpoints_model.dart';
+import 'package:bluecrown/Apis/api_models/get_response_mypurchasingevents_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_privacypolicy_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_published_myevent_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_termscondition_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_updateclubrequest_model.dart';
 import 'package:bluecrown/Apis/api_models/get_usercategory_model.dart';
+import 'package:bluecrown/Apis/api_models/get_walletbyclubid_model.dart';
 
 import '../../Common/http_methods.dart';
 import '../api_constants/api_url_constants.dart';
@@ -65,6 +70,24 @@ class ApiMethods {
     http.Response? response = await MyHttp.postMethod(
       bodyParams: bodyParams,
       url: ApiUrlConstants.endPointOfHostSignUp,
+      checkResponse: checkResponse,
+    );
+    if (response != null) {
+      signUpModel = SignUpModel.fromJson(jsonDecode(response.body));
+      return signUpModel;
+    }
+    return null;
+  }
+
+  /// Host Registration As Vip Api Calling .....
+  static Future<SignUpModel?> submitVipClubHostForm({
+    void Function(int)? checkResponse,
+    Map<String, dynamic>? bodyParams,
+  }) async {
+    SignUpModel? signUpModel;
+    http.Response? response = await MyHttp.postMethod(
+      bodyParams: bodyParams,
+      url: ApiUrlConstants.endPointOfVipHostSignUp,
       checkResponse: checkResponse,
     );
     if (response != null) {
@@ -413,6 +436,21 @@ class ApiMethods {
     }
     return null;
   }
+  /// Get Wallet Amount According Club id Api Calling .....
+  static Future<GetClubWalletModel?> getWalletAmountAccordingClubIdApi(
+      {void Function(int)? checkResponse,required String userId,required String clubId}) async {
+    String apiURL='${ApiUrlConstants.endPointOfGetWalletByClubIdUserId}?user_id=$userId&club_id=$clubId';
+    GetClubWalletModel? getClubWalletModel;
+    http.Response? response = await MyHttp.getMethod(
+      url: apiURL,
+      checkResponse: checkResponse,
+    );
+    if (response != null) {
+      getClubWalletModel = GetClubWalletModel.fromJson(jsonDecode(response.body));
+      return getClubWalletModel;
+    }
+    return null;
+  }
   /// Get Club Hanger Api Calling .....
   static Future<GetClubHangerModel?> getClubHangerApi(
       {void Function(int)? checkResponse,required String clubId}) async {
@@ -541,6 +579,81 @@ class ApiMethods {
     return null;
   }
 
+  ///Add PurchaseEvent Api Calling.....
+  static Future<AddPurchaseEventModel?> addPurchaseEventApi({
+    void Function(int)? checkResponse,
+    Map<String, dynamic>? bodyParams,
+  }) async {
+    AddPurchaseEventModel? addPurchaseEventModel;
+    http.Response? response = await MyHttp.postMethod(
+      bodyParams: bodyParams,
+      url: ApiUrlConstants.endPointOfAddPurchaseEvent,
+      checkResponse: checkResponse,
+    );
+
+    if (response != null) {
+      addPurchaseEventModel = AddPurchaseEventModel.fromJson(jsonDecode(response.body));
+      return addPurchaseEventModel;
+    }
+    return null;
+  }
+  ///Get My Purchasing Events Api Calling.....
+  static Future<GetMyPurchasingEventModel?> getMyPurchasingEventsApi({
+    void Function(int)? checkResponse,
+    required String userId
+  }) async {
+    String apiUrl='${ApiUrlConstants.endPointOfGetPurchaseEvent}?user_id=$userId';
+    GetMyPurchasingEventModel? getMyPurchasingEventModel;
+    http.Response? response = await MyHttp.getMethod(
+      url: apiUrl,
+      checkResponse: checkResponse,
+    );
+
+    if (response != null) {
+      getMyPurchasingEventModel = GetMyPurchasingEventModel.fromJson(jsonDecode(response.body));
+      return getMyPurchasingEventModel;
+    }
+    return null;
+  }
+  ///Get My Wallet History Api Calling.....
+  static Future<MyWalletHistoryModel?> myWalletHistoryApi({
+    void Function(int)? checkResponse,
+    required String userId
+  }) async {
+    String apiUrl='${ApiUrlConstants.endPointOfGetWalletHistory}?user_id=$userId';
+    MyWalletHistoryModel? myWalletHistoryModel;
+    http.Response? response = await MyHttp.getMethod(
+      url: apiUrl,
+      checkResponse: checkResponse,
+    );
+
+    if (response != null) {
+      myWalletHistoryModel = MyWalletHistoryModel.fromJson(jsonDecode(response.body));
+      return myWalletHistoryModel;
+    }
+    return null;
+  }
+
+
+  ///Get Club Purchased User List Api Calling.....
+  static Future<ClubPurchasedUserModel?> getClubPurchasedUserApi({
+    void Function(int)? checkResponse,
+    required String clubId
+  }) async {
+    String apiUrl='${ApiUrlConstants.endPointOfClubPurchasedUserList}?club_id=$clubId';
+    ClubPurchasedUserModel? clubPurchasedUserModel;
+    http.Response? response = await MyHttp.getMethod(
+      url: apiUrl,
+      checkResponse: checkResponse,
+    );
+
+    if (response != null) {
+      clubPurchasedUserModel = ClubPurchasedUserModel.fromJson(jsonDecode(response.body));
+      return clubPurchasedUserModel;
+    }
+    return null;
+  }
+
   ///Get All Club Request Api Calling.....
   static Future<GetClubRequestModel?> getAllClubRequestApi({
     void Function(int)? checkResponse,
@@ -586,10 +699,7 @@ class ApiMethods {
   }) async {
     String apiUrl='${ApiUrlConstants.endPointOfGetWardrobeUserList}?club_id=$clubId&checkout=$checkOut';
     GetWardrobeUsersModel? getWardrobeUsersModel;
-    http.Response? response = await MyHttp.getMethod(
-      url: apiUrl,
-      checkResponse: checkResponse,
-    );
+    http.Response? response = await MyHttp.getMethod(url: apiUrl, checkResponse: checkResponse,);
     if (response != null) {
       getWardrobeUsersModel = GetWardrobeUsersModel.fromJson(jsonDecode(response.body));
       return getWardrobeUsersModel;

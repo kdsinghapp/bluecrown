@@ -89,15 +89,20 @@ class LoginController extends GetxController{
 
     };
     print("bodyParamsForGetEducationLevel:::::$bodyParamsForSubmitLoginForm");
-    logInModel = await ApiMethods.logInApi(
-        bodyParams: bodyParamsForSubmitLoginForm);
-    if (logInModel!.status!="0"??false ) {
-      saveDataSharedPreference(logInModel);
-    }else{
-      print("LogIn Failed....");
-      showToastMessage(logInModel!.message!);
-      changeProgressbarStatus(false);
+    try {
+      logInModel = await ApiMethods.logInApi(
+          bodyParams: bodyParamsForSubmitLoginForm);
+      if (logInModel!.status != "0" ?? false) {
+        saveDataSharedPreference(logInModel);
+      } else {
+        print("LogIn Failed....");
+        showToastMessage(logInModel!.message!);
+      }
+    }catch(e){
+      print('Error:-'+e.toString());
+      showToastMessage('Server issue please try again after some time ');
     }
+    changeProgressbarStatus(false);
   }
   saveDataSharedPreference(LogInModel? userdata) async{
     sharedPreferences=await SharedPreferences.getInstance();

@@ -3,6 +3,7 @@ import 'package:bluecrown/Controller/UserPointsController.dart';
 import 'package:bluecrown/Tool/Color.dart';
 import 'package:bluecrown/Tool/MyTextStyle.dart';
 import 'package:bluecrown/common/CommonWidget.dart';
+import 'package:bluecrown/common/ShowToast.dart';
 import 'package:bluecrown/constant/iconsconstants.dart';
 import 'package:bluecrown/constant/stringconstants.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,30 @@ class _LogoutState extends State<UserPointsActivity> {
           ),
         ],
       ),
+      bottomNavigationBar:Obx(() => controller.showProgressBar.value?
+      Container(
+        width: double.infinity,
+        height: 50,
+        margin: EdgeInsets.all(10.px),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(25.px)),
+            color: primaryColor
+        ),
+        child:  Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+                height:30,width:30,
+                child:CircularProgressIndicator(color:primary3Color,)
+            ),
+            const SizedBox(width: 10,),
+            Text("Loading...",style: MyTextStyle.titleStyle16bw,),
 
+          ],
+        ),
+      ):
+      SizedBox(height: 2.px,),
+      ),
       body:
       Center(
         child: Column(
@@ -122,7 +146,13 @@ class _LogoutState extends State<UserPointsActivity> {
                 children: [
                   CommonWidget.commonElevatedButton(
                       onPressed: (){
-                        openSuccessBox(context);
+                        if(double.parse(controller.parameterData['points']!)>=double.parse(controller.parameterData['price']!)){
+                          controller.changeProgressbarStatus(true);
+                          controller. callingAddPurchaseEventsForm();
+                        }else{
+                          showToastMessage('Wallet amount is less than event amount .');
+                        }
+
                       },
                       text: StringConstants.yes,
                       wantContentSizeButton: true,
@@ -157,42 +187,4 @@ class _LogoutState extends State<UserPointsActivity> {
 
   }
 
-  /// Show Send Request Box...
-  void openSuccessBox(BuildContext context){
-    showDialog(
-      context: context,
-      builder: (ctx)=>AlertDialog(
-        title:  Center(child: Text("Strömpis Entry",style: MyTextStyle.titleStyle24bb,)),
-        insetPadding: EdgeInsets.symmetric(horizontal: 20.px),
-        contentPadding: EdgeInsets.zero,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.px))
-        ),
-        content:  Container(
-            height: 260.px,width: MediaQuery.of(context).size.width-60.px,
-            padding: EdgeInsets.all(10.px),
-            child:Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: 10.px,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(IconsConstants.subCrownIcon, height: 40.px, width: 50.px, fit: BoxFit.fill,),
-                    SizedBox(width: 10.px,),
-                    Text('${controller.parameterData['price']}', style: MyTextStyle.titleStyle20bb,),
-                  ],
-                ),
-                SizedBox(height: 30.px,),
-                Image.asset(IconsConstants.doneIcon,fit: BoxFit.cover,width: 100.px,height: 100.px,),
-              ],
-            )
-        ),
-        alignment: Alignment.center,
-
-      ),
-    );
-  }
 }

@@ -23,9 +23,9 @@ class MoreController extends GetxController {
   RxInt count=0.obs;
   late SharedPreferences sharedPreferences;
   late LogInModel userData;
-  List<String> list1 = [StringConstants.notification,StringConstants.changePassword,StringConstants.myBookingEvent];
+  List<String> list1 = [StringConstants.notification,StringConstants.changePassword,StringConstants.myWalletHistory,StringConstants.myBookingEvents,StringConstants.myPurchasingEvents];
   List<String> list2= [StringConstants.support,StringConstants.termsCondition,StringConstants.privacyPolicy];
-  List mainIconList=[IconsConstants.notificationIcon,IconsConstants.passwordIcon,IconsConstants.userIcon];
+  List mainIconList=[IconsConstants.notificationIcon,IconsConstants.passwordIcon,IconsConstants.userIcon,IconsConstants.userIcon,IconsConstants.userIcon];
   List moreIconList=[IconsConstants.supportIcon,IconsConstants.termsIcon,IconsConstants.privacyIcon];
   @override
   void onInit() {
@@ -71,7 +71,23 @@ class MoreController extends GetxController {
           'userId':userData.result!.id!,
           'token':userData.result!.token!
         };
+        Get.toNamed('/myWalletHistoryActivity',parameters: data);
+      }
+      break;
+      case 3:{
+        Map<String,String>data={
+          'userId':userData.result!.id!,
+          'token':userData.result!.token!
+        };
         Get.toNamed('/myBookingEventActivity',parameters: data);
+      }
+      break;
+      case 4:{
+        Map<String,String>data={
+          'userId':userData.result!.id!,
+          'token':userData.result!.token!
+        };
+        Get.toNamed('/myPurchasingEventActivity',parameters: data);
       }
       break;
     }

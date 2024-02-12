@@ -1,8 +1,12 @@
 class ApiUrlConstants {
+  //https://bluecrownaccess.se/bluecrown/webservice/signup
+  //https://server-php-7-3.technorizen.com/bluecrown/
+
   static const String baseUrlMain = 'https://server-php-7-3.technorizen.com/bluecrown/';
-  static const String baseUrl = '$baseUrlMain/webservice/';
+  static const String baseUrl ='$baseUrlMain/webservice/';
   static const String endPointOfSignUp = '${baseUrl}signup';
   static const String endPointOfHostSignUp = '${baseUrl}host_signup';
+  static const String endPointOfVipHostSignUp = '${baseUrl}host_direct_signup';
   static const String endPointOfCategory='${baseUrl}get_category';
   static const String endPointOfGetParties='${baseUrl}get_parties';
   static const String endPointOfForgot = '${baseUrl}forgot_password';
@@ -33,8 +37,11 @@ class ApiUrlConstants {
   static const String endPointOfGetMyBookingEventRequest='${baseUrl}get_user_booking_request';
   static const String endPointOfAddHanger='${baseUrl}add_club_hanger';
   static const String endPointOfScanEventQrCode='${baseUrl}scane_event_qrcode';
-
-
+  static const String endPointOfGetWalletByClubIdUserId='${baseUrl}get_club_wallet';
+  static const String endPointOfAddPurchaseEvent='${baseUrl}add_purchase_event';
+  static const String endPointOfGetPurchaseEvent='${baseUrl}get_purchase_event';
+  static const String endPointOfGetWalletHistory='${baseUrl}get_wallet_history';
+  static const String endPointOfClubPurchasedUserList='${baseUrl}get_purchase_event_club';
 
 
   static const String endPointOfUpdateProfile = '${baseUrl}update_profile';

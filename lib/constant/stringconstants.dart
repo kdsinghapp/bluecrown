@@ -36,7 +36,9 @@ class StringConstants {
   static const String customerRegister='Costumer Register';
   static const String notification='Notification';
   static const String changePassword='Change Password';
-  static const String myBookingEvent='My Booking Event';
+  static const String myBookingEvents='My Booking Events';
+  static const String myWalletHistory='My Wallet History';
+  static const String myPurchasingEvents='My Purchasing Events';
   static const String support='Support';
   static const String termsCondition='Terms and conditions';
   static const String privacyPolicy='Privacy policy';
@@ -49,6 +51,7 @@ class StringConstants {
   static const String createAccountAs='Create account as';
   static const String clubOrHost='club or host';
   static const String sendRequest='SEND REQUEST';
+  static const String addClubHostAsVip='Add Club/Host As Vip';
   static const String signUpWithBankId='Sign up with Bank-Id';
   static const String passwordReset='Password Reset';
   static const String pleasePutYourEmailOrMobileNumberResetPassword='Please put your email or mobile number to\nreset your password';

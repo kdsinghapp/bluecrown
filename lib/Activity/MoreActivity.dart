@@ -88,7 +88,6 @@ class _MoreState extends State<MoreActivity> {
                                 ),
                               ),
                               title:  Text(StringConstants.iAmClubHost,style: MyTextStyle.titleStyle16bb,),
-                              subtitle:  Text('Lorem ipsum dolor sit amet, ',style:MyTextStyle.titleStyle14b ,),
                               trailing: const Icon(Icons.arrow_forward_ios,size: 20,color: Colors.black26,),
 
                             ),
@@ -103,7 +102,6 @@ class _MoreState extends State<MoreActivity> {
                                 ),
                               ),
                               title:  Text(StringConstants.iAmAdmin,style: MyTextStyle.titleStyle16bb,),
-                              subtitle:  Text('Lorem ipsum dolor sit amet, ',style:MyTextStyle.titleStyle14b ,),
                               trailing: const Icon(Icons.arrow_forward_ios,size: 20,color: Colors.black26,),
 
                             ),
@@ -179,7 +177,6 @@ class _MoreState extends State<MoreActivity> {
                   ),
                 ),
                 title:  Text(controller.list1[index],style: MyTextStyle.titleStyle16bb,),
-                subtitle:  Text('Lorem ipsum dolor sit amet, ',style:MyTextStyle.titleStyle14b ,),
                 trailing: const Icon(Icons.arrow_forward_ios,size: 20,color: Colors.black26,),
 
               ),
@@ -210,7 +207,6 @@ class _MoreState extends State<MoreActivity> {
                   ),
                 ),
                 title:  Text(controller.list2[index],style: MyTextStyle.titleStyle16bb,),
-                subtitle:  Text('Lorem ipsum dolor sit amet, ',style:MyTextStyle.titleStyle14b ,),
                 trailing: const Icon(Icons.arrow_forward_ios,size: 20,color: Colors.black26,),
 
               ),

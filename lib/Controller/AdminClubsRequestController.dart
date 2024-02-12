@@ -7,6 +7,7 @@ import 'package:bluecrown/Apis/api_models/get_response_updateclubrequest_model.d
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Activity/AddVipClubHostActivity.dart';
 import '../Activity/PointsActivity.dart';
 import '../Apis/api_constants/api_key_constants.dart';
 import '../Apis/api_methods/api_methods.dart';
@@ -54,8 +55,8 @@ class AdminClubsRequestController extends GetxController {
     showLoading.value=value;
   }
 
-  openPointsActivity(){
-    Get.to(()=> const PointActivity());
+  openAddVipClubHostActivity(){
+    Get.to(()=> const AddVipClubHostActivity());
   }
 
   getClubs() async{
@@ -96,7 +97,6 @@ class AdminClubsRequestController extends GetxController {
       ApiKeyConstants.registerId:registerId,
       ApiKeyConstants.token:userData.result!.token,
       ApiKeyConstants.request:status,
-
     };
     print("bodyParamsForUpdateClubRequestForm:::::$bodyParamsForUpdateClubRequestForm");
     updateClubRequestModel = await ApiMethods.updateClubRequestApi(
@@ -113,9 +113,5 @@ class AdminClubsRequestController extends GetxController {
       showToastMessage(updateClubRequestModel!.message!);
     }
   }
-
-
-
-
 
 }
