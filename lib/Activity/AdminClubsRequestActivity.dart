@@ -87,14 +87,7 @@ class _AdminClubsRequestState extends State<AdminClubsRequestActivity> {
 
               ],
             ),
-          ):
-          CommonWidget.commonElevatedButton(
-              onPressed: (){
-                controller.openAddVipClubHostActivity();
-              },
-            text:'Add club/host as vip',
-              borderRadius: 10.px
-          )
+          ):SizedBox(height: 5.px,)
           )
 
       ),

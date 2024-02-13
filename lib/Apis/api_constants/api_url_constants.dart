@@ -5,6 +5,7 @@ class ApiUrlConstants {
   static const String baseUrlMain = 'https://server-php-7-3.technorizen.com/bluecrown/';
   static const String baseUrl ='$baseUrlMain/webservice/';
   static const String endPointOfSignUp = '${baseUrl}signup';
+  static const String endPointOfVipUserSignUp = '${baseUrl}vip_user_signup';
   static const String endPointOfHostSignUp = '${baseUrl}host_signup';
   static const String endPointOfVipHostSignUp = '${baseUrl}host_direct_signup';
   static const String endPointOfCategory='${baseUrl}get_category';

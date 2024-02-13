@@ -60,6 +60,23 @@ class ApiMethods {
     }
     return null;
   }
+  /// Vip User Registration Api Calling .....
+  static Future<SignUpModel?> submitVipUserRegistrationForm({
+    void Function(int)? checkResponse,
+    Map<String, dynamic>? bodyParams,
+  }) async {
+    SignUpModel? signUpModel;
+    http.Response? response = await MyHttp.postMethod(
+      bodyParams: bodyParams,
+      url: ApiUrlConstants.endPointOfVipUserSignUp,
+      checkResponse: checkResponse,
+    );
+    if (response != null) {
+      signUpModel = SignUpModel.fromJson(jsonDecode(response.body));
+      return signUpModel;
+    }
+    return null;
+  }
 
   /// Host Registration Api Calling .....
   static Future<SignUpModel?> submitHostRegistrationForm({

@@ -108,7 +108,7 @@ class _ClubListState extends State<ClubActivity>{
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10.px)),
             ),
-            margin: EdgeInsets.only(left:10.px,right: 10.px,top: 2.px,bottom: 2.px),
+            margin: EdgeInsets.only(left:10.px,right: 10.px,top: 1.px,bottom: 1.px),
             clipBehavior: Clip.hardEdge,
             child: Stack(
               // crossAxisAlignment: CrossAxisAlignment.start,

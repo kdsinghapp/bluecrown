@@ -1,13 +1,10 @@
 import 'package:bluecrown/Apis/api_models/get_response_published_myevent_model.dart';
-import 'package:bluecrown/Controller/ClubAdminController.dart';
 import 'package:bluecrown/Controller/ClubAllEventListController.dart';
 import 'package:bluecrown/Tool/Color.dart';
 import 'package:bluecrown/Tool/MyTextStyle.dart';
 import 'package:bluecrown/common/CommonWidget.dart';
 import 'package:bluecrown/constant/iconsconstants.dart';
-import 'package:bluecrown/constant/imageconstants.dart';
 import 'package:bluecrown/constant/stringconstants.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -232,31 +229,26 @@ class _ClubAllEventState extends State<ClubAllEventActivity> {
                         ],
                       ),
 
-                      GestureDetector(
-                        onTap: (){
-                          controller.openDownloadActivity(item.points!);
-                        },
-                        child: SizedBox(
-                          width: 70.px,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 20.px, width: 30.px,
-                                    child: Image.asset(IconsConstants.subCrownIcon, fit: BoxFit.fill,),
-                                  ),
-                                  SizedBox(width: 5.px,),
-                                  Text(item.points!, style: MyTextStyle.titleStyle14bb,textAlign: TextAlign.center,),
-                                ],
-                              ),
+                      SizedBox(
+                        width: 70.px,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 20.px, width: 30.px,
+                                  child: Image.asset(IconsConstants.subCrownIcon, fit: BoxFit.fill,),
+                                ),
+                                SizedBox(width: 5.px,),
+                                Text(item.points!, style: MyTextStyle.titleStyle14bb,textAlign: TextAlign.center,),
+                              ],
+                            ),
 
-                            ],
-                          ),
+                          ],
                         ),
                       ),
                     ],

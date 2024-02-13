@@ -55,9 +55,9 @@ class AdminClubsRequestController extends GetxController {
     showLoading.value=value;
   }
 
-  openAddVipClubHostActivity(){
-    Get.to(()=> const AddVipClubHostActivity());
-  }
+  // openAddVipClubHostActivity(){
+  //   Get.to(()=> const AddVipClubHostActivity());
+  // }
 
   getClubs() async{
     getClubsModel = await ApiMethods.getClubListApi();
