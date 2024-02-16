@@ -142,7 +142,7 @@ class _AdminWardrobeState extends State<AdminWardrobeActivity>{
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child:showWardrobeList() ,
+                child:showWardrobeList(),
               ),
             ),
 

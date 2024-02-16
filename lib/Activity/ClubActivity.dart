@@ -112,6 +112,7 @@ class _ClubListState extends State<ClubActivity>{
             clipBehavior: Clip.hardEdge,
             child: Stack(
               // crossAxisAlignment: CrossAxisAlignment.start,
+              fit: StackFit.expand,
               children: [
                 CachedNetworkImage(
                   imageUrl:item.image!, fit:BoxFit.cover,width: double.infinity,height: 200.px,

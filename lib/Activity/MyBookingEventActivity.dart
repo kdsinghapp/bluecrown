@@ -85,7 +85,7 @@ class _MyBookingEventState extends State<MyBookingEventActivity>{
             itemCount: 5,
             itemBuilder: (BuildContext context,int index){
               return  Container(
-                height: 70.px,
+                height: 90.px,
                 width: double.infinity,
                 margin: const EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 0),
                 decoration: const BoxDecoration(
@@ -93,7 +93,7 @@ class _MyBookingEventState extends State<MyBookingEventActivity>{
                     borderRadius: BorderRadius.all(Radius.circular(10))
                 ),
                 child: Container(
-                  height: 70.px,width: double.infinity,
+                  height: 90.px,width: double.infinity,
                   margin: const EdgeInsets.only(left: 10,right: 10,top: 5),
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -124,18 +124,37 @@ class _MyBookingEventState extends State<MyBookingEventActivity>{
             margin: EdgeInsets.only(left:15.px,right: 15.px,top: 5.px,bottom: 5.px),
             color: cartColor,
             child: Container(
-                height: 70.px,
+                height: 90.px,
                 width: double.infinity,
                 decoration:  BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10.px)),
                 ),
                 margin: EdgeInsets.all(5.px),
+                padding: EdgeInsets.all(8.px),
                 clipBehavior: Clip.hardEdge,
-                child: ListTile(
-                  horizontalTitleGap: 0.px,
-                  title: Text(item.eventName!,style: MyTextStyle.titleStyle14b,),
-                  subtitle:Text(item.eventDate!,style: MyTextStyle.titleStyle16b,),
-                  trailing: Text('${item.totalPeople.toString()} +',style: MyTextStyle.titleStyle14b,),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(item.fullName!,style: MyTextStyle.titleStyle16b,),
+                        SizedBox(height: 5.px,),
+                        Text(item.eventName!,style: MyTextStyle.titleStyle14b,),
+                        SizedBox(height: 5.px,),
+                        Text(item.eventDate!,style: MyTextStyle.titleStyle16b,),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        item.type=='Vip'?Icon(Icons.star,size: 20.px,color: Colors.green,):
+                        SizedBox(height: 5.px,width: 5.px,),
+                        SizedBox(height: 5.px,),
+                        Text('${item.totalPeople.toString()} +',style: MyTextStyle.titleStyle14b,),
+                      ],
+                    ),
+                  ],
                 )
             ),
           ),

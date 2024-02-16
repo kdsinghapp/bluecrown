@@ -19,7 +19,7 @@ class AddListActivity extends StatefulWidget {
 
 class _AddEventListState extends State<AddListActivity> {
   AddListController controller=Get.put(AddListController());
-
+  int tabIndex=0;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,8 @@ class _AddEventListState extends State<AddListActivity> {
                 onPressed: (){
                   if(controller.formKey.currentState!.validate()){
                     controller.changeProgressbarStatus(true);
-                    controller.callingBookEventForm();
+                    tabIndex==0?
+                    controller.callingBookEventForm('Normal'):controller.callingBookEventForm('Vip');
                   }
                 },
                 text: StringConstants.addList,
@@ -107,7 +108,57 @@ class _AddEventListState extends State<AddListActivity> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(StringConstants.addList,style: MyTextStyle.titleStyle24bb,),
-                  SizedBox(height: 20.px,),
+                  SizedBox(height: 15.px,),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              tabIndex=0;
+                            });
+                          },
+                          child: Container(
+                            height: 40.px,
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(left: 10.px,right: 5.px),
+                            decoration: BoxDecoration(
+                                color:tabIndex==0?primaryColor:primary3Color,
+                                borderRadius: BorderRadius.all(Radius.circular(10.px)),
+                                border: Border.all(color:primaryColor,width: 1.px)
+                            ),
+                            child: Text("Normal List",style:tabIndex==0?MyTextStyle.titleStyle16bw:MyTextStyle.titleStyle16bb,
+                              textAlign: TextAlign.center,),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: GestureDetector(
+                          onTap: (){
+                           setState(() {
+                             tabIndex=1;
+                           });
+                          },
+                          child: Container(
+                            height: 40.px,
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(left: 5.px,right: 10.px),
+                            decoration: BoxDecoration(
+                              color:tabIndex==1?primaryColor:primary3Color,
+                              borderRadius: BorderRadius.all(Radius.circular(10.px)),
+                              border: Border.all(color:primaryColor,width: 1.px)
+                            ),
+                            child: Text("Vip List",style:tabIndex==1?MyTextStyle.titleStyle16bw:MyTextStyle.titleStyle16bb,
+                              textAlign: TextAlign.center,),
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(height: 15.px,),
                   CommonWidget.commonTextField(
                     validator: (value) => FormValidator.isEmptyValid(value: value),
                       controller: controller.fullNameController,

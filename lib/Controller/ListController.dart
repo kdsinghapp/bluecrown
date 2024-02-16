@@ -1,4 +1,4 @@
-import 'package:bluecrown/Activity/AddVipUserActivity.dart';
+
 import 'package:bluecrown/Apis/api_models/get_response_friendsrequest_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_getfriends_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -44,12 +44,7 @@ class ListController extends GetxController {
     count.value=value;
   }
 
-  openAddVipUser() async{
-    changeFriendsProgressBar(true);
-    await Get.to(()=> const AddVipUserActivity());
-    onInit();
-    print('Reloading ...');
-  }
+
 
   showAllUsers(GetFriendsModel model){
     filterUsersList=model.result!;

@@ -6,13 +6,11 @@ class GetBookingRequestModel {
   GetBookingRequestModel({this.result, this.message, this.status});
 
   GetBookingRequestModel.fromJson(Map<String, dynamic> json) {
-    if (json['status'] != '0') {
+    if (json['result'] != null) {
       result = <GetBookingRequest>[];
       json['result'].forEach((v) {
         result!.add(GetBookingRequest.fromJson(v));
       });
-    }else{
-      result=[];
     }
     message = json['message'];
     status = json['status'];
@@ -39,7 +37,7 @@ class GetBookingRequest {
   String? totalPeople;
   String? status;
   String? dateTime;
-  int? totalRequest;
+  String? type;
   String? eventName;
   String? description;
   String? eventStyle;
@@ -57,7 +55,7 @@ class GetBookingRequest {
         this.totalPeople,
         this.status,
         this.dateTime,
-        this.totalRequest,
+        this.type,
         this.eventName,
         this.description,
         this.eventStyle,
@@ -75,7 +73,7 @@ class GetBookingRequest {
     totalPeople = json['total_people'];
     status = json['status'];
     dateTime = json['date_time'];
-    totalRequest = json['total_request'];
+    type = json['type'];
     eventName = json['event_name'];
     description = json['description'];
     eventStyle = json['event_style'];
@@ -95,7 +93,7 @@ class GetBookingRequest {
     data['total_people'] = totalPeople;
     data['status'] = status;
     data['date_time'] = dateTime;
-    data['total_request'] = totalRequest;
+    data['type'] = type;
     data['event_name'] = eventName;
     data['description'] = description;
     data['event_style'] = eventStyle;
@@ -105,3 +103,4 @@ class GetBookingRequest {
     return data;
   }
 }
+

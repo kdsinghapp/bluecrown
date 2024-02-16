@@ -49,10 +49,18 @@ class _ConsumerSearchState extends State<ConsumerSearchActivity>{
           ),
           actions: [
             Padding(
-              padding:  EdgeInsets.only(left: 5.px,right: 15.px,top: 10.px,bottom: 10.px),
+              padding: EdgeInsets.only(right: 20.px, top: 10.px, bottom: 10.px),
               child: GestureDetector(
-                  onTap:(){},
-                  child: Image.asset(IconsConstants.profileIcon,height: 30.px,width: 30.px,)
+                  onTap: () {
+                    controller.openAddVipUser();
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Add Vip User ",style: MyTextStyle.titleStyle12b,),
+                      const Icon(Icons.person_add_alt_1,size: 25,color: primaryColor,),
+                    ],
+                  )
               ),
             ),
           ],
@@ -239,7 +247,9 @@ class _ConsumerSearchState extends State<ConsumerSearchActivity>{
                     ),
                     title: Text(item.fullName!,
                       style: MyTextStyle.titleStyle16bb,),
-                    subtitle: Text('Johan Smihs', style: MyTextStyle.titleStyle12blb,),
+                    subtitle: Text(item.dob!, style: MyTextStyle.titleStyle12blb,),
+                    trailing: item.hostMember=='vip'?const Icon(Icons.star,size: 15,color: greenColor,):
+                        SizedBox(height: 5.px,width: 5.px,)
                   )
               ),
             );

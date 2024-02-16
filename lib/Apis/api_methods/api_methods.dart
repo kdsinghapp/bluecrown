@@ -330,8 +330,8 @@ class ApiMethods {
 
   /// Get Get Event booking Request by club id  Api Calling .....
   static Future<GetBookingRequestModel?> getEventBookingRequestApi(
-      {void Function(int)? checkResponse,required String clubId}) async {
-    String url='${ApiUrlConstants.endPointOfGetBookingRequest}?club_id=$clubId';
+      {void Function(int)? checkResponse,required String clubId,required String type}) async {
+    String url='${ApiUrlConstants.endPointOfGetBookingRequest}?club_id=$clubId&type=$type';
     GetBookingRequestModel? getBookingRequestModel;
     http.Response? response = await MyHttp.getMethod(
       url: url,

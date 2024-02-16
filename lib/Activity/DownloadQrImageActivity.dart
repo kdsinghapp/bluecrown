@@ -204,7 +204,8 @@ class _DownloadQrImageState extends State<DownloadQrImageActivity> {
                   padding: EdgeInsets.all(10.px),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10.px)),
-                    border: Border.all(color: text2Color,width: 2.px)
+                    border: Border.all(color: text2Color,width: 2.px),
+                    color: Colors.white
                   ),
                   child: qrFutureBuilder,
                 ),

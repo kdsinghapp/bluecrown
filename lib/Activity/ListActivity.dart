@@ -1,5 +1,4 @@
 
-import 'package:bluecrown/Activity/AddVipUserActivity.dart';
 import 'package:bluecrown/Apis/api_models/get_response_getfriends_model.dart';
 import 'package:bluecrown/Controller/ListController.dart';
 import 'package:bluecrown/Tool/Color.dart';
@@ -54,19 +53,12 @@ class _ListState extends State<ListActivity> {
               )
           ),
         ), actions: [
+
         Padding(
-          padding: EdgeInsets.only(right: 20.px, top: 10.px, bottom: 10.px),
+          padding:  EdgeInsets.only(left: 5.px,right: 15.px,top: 10.px,bottom: 10.px),
           child: GestureDetector(
-              onTap: () {
-                controller.openAddVipUser();
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text("Add Vip User ",style: MyTextStyle.titleStyle12b,),
-                  const Icon(Icons.person_add_alt_1,size: 25,color: primaryColor,),
-                ],
-              )
+              onTap:(){},
+              child: Image.asset(IconsConstants.profileIcon,height: 30.px,width: 30.px,)
           ),
         ),
       ],

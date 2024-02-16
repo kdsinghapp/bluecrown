@@ -82,7 +82,7 @@ class AddListController extends GetxController{
     }
   }
 
-  Future<void> callingBookEventForm() async {
+  Future<void> callingBookEventForm(String type) async {
     bodyParamsForAddListForm = {
       ApiKeyConstants.eventId:parameterData['eventId'],
       ApiKeyConstants.clubId:parameterData['clubId'],
@@ -91,7 +91,7 @@ class AddListController extends GetxController{
       ApiKeyConstants.fullName:fullNameController.text.toString(),
       ApiKeyConstants.age: ageController.text.toString(),
       ApiKeyConstants.totalPeople:howManyController.text.toString(),
-
+      ApiKeyConstants.type:type,
     };
     print("bodyParamsForAddListForm:::::$bodyParamsForAddListForm");
     addListModel = await ApiMethods.userAddListApi(

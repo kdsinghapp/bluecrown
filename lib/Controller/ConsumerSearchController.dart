@@ -5,6 +5,7 @@ import 'package:bluecrown/constant/stringconstants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../Activity/AddVipUserActivity.dart';
 import '../Apis/api_constants/api_key_constants.dart';
 import '../Apis/api_methods/api_methods.dart';
 import '../Apis/api_models/get_response_getfriends_model.dart';
@@ -50,6 +51,12 @@ class ConsumerSearchController extends GetxController {
 
   changeCount(int value){
     count.value=value;
+  }
+  openAddVipUser() async{
+    changeFriendsProgressBar(true);
+    await Get.to(()=> const AddVipUserActivity());
+    onInit();
+    print('Reloading ...');
   }
 
   showAllUsers(GetFriendsModel model){
