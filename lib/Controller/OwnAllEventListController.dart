@@ -2,15 +2,12 @@ import 'package:bluecrown/Apis/api_models/get_response_published_myevent_model.d
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Activity/ConsumerActivity.dart';
-import '../Activity/DownloadQrImageActivity.dart';
 import '../Apis/api_methods/api_methods.dart';
 import '../common/ShowToast.dart';
 
-class ClubAllEventListController extends GetxController {
+class OwnAllEventListController extends GetxController {
   TextEditingController searchController = TextEditingController();
   RxBool showProgressBar = true.obs;
-  RxBool presentData = true.obs;
   Map<String, String?> parameterData = Get.parameters;
   Map<String, dynamic> bodyParamsForPublishMyEventForm = {};
   PublishMyEventModel? publishMyEventModel;
@@ -43,27 +40,16 @@ class ClubAllEventListController extends GetxController {
     update();
   }
 
-  openChooseEventActivity(int index) async {
-    await Get.toNamed('/chooseEventActivity',
-        arguments: publishMyEventModel!.result![index]);
-  }
-
-  openConsumerActivity() {
-    Get.to(() => const ConsumerActivity());
-  }
-
-  openDownloadActivity(String price) {
-    Get.to(() => DownloadQrImageActivity(
-          price: price,
-        ));
+  openSelfAllListActivity(String eventId) async {
+    Map<String, String> data = {
+      'clubId': parameterData['clubId']!,
+      'eventId': eventId
+    };
+    Get.toNamed('/selfAddListActivity', parameters: data);
   }
 
   changeProgressbarStatus(bool value) {
     showProgressBar.value = value;
-  }
-
-  changePresentData(bool value) {
-    presentData.value = value;
   }
 
   Future<void> getMyPublishEventsList(String clubId) async {
@@ -73,7 +59,6 @@ class ClubAllEventListController extends GetxController {
       print("Get My published events Successfully complete...");
     } else {
       print("Get My published events Failed....");
-      changePresentData(false);
       changeProgressbarStatus(false);
       showToastMessage(publishMyEventModel!.message!);
     }

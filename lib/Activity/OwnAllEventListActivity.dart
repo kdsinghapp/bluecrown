@@ -1,5 +1,5 @@
 import 'package:bluecrown/Apis/api_models/get_response_published_myevent_model.dart';
-import 'package:bluecrown/Controller/ClubAllEventListController.dart';
+import 'package:bluecrown/Controller/OwnAllEventListController.dart';
 import 'package:bluecrown/Tool/Color.dart';
 import 'package:bluecrown/Tool/MyTextStyle.dart';
 import 'package:bluecrown/common/CommonWidget.dart';
@@ -10,15 +10,15 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ClubAllEventActivity extends StatefulWidget {
-  const ClubAllEventActivity({super.key});
+class OwnAllEventListActivity extends StatefulWidget {
+  const OwnAllEventListActivity({super.key});
 
   @override
-  State<ClubAllEventActivity> createState() => _ClubAllEventState();
+  State<OwnAllEventListActivity> createState() => _OwnAllEventListState();
 }
 
-class _ClubAllEventState extends State<ClubAllEventActivity> {
-  ClubAllEventListController controller = Get.put(ClubAllEventListController());
+class _OwnAllEventListState extends State<OwnAllEventListActivity> {
+  OwnAllEventListController controller = Get.put(OwnAllEventListController());
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _ClubAllEventState extends State<ClubAllEventActivity> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Text(
-            '${controller.parameterData['clubName']}\nAll Event List ',
+            'Choose Event',
             style: MyTextStyle.titleStyle18bb,
             textAlign: TextAlign.center,
           ),
@@ -117,18 +117,9 @@ class _ClubAllEventState extends State<ClubAllEventActivity> {
           ),
           Expanded(
             child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Obx(() => controller.presentData.value
-                    ? showPublishedList()
-                    : const Center(
-                        child: Text(
-                          "There are not present any event list.",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.redAccent),
-                        ),
-                      ))),
+              scrollDirection: Axis.vertical,
+              child: showPublishedList(),
+            ),
           ),
         ],
       ),
@@ -137,7 +128,7 @@ class _ClubAllEventState extends State<ClubAllEventActivity> {
 
   /// Show Publish List List...
   Widget showPublishedList() {
-    return GetBuilder<ClubAllEventListController>(builder: (context) {
+    return GetBuilder<OwnAllEventListController>(builder: (context) {
       return Obx(() => controller.showProgressBar.value
           ? Shimmer.fromColors(
               baseColor: Colors.grey[300]!,
@@ -390,7 +381,7 @@ class _ClubAllEventState extends State<ClubAllEventActivity> {
               CommonWidget.commonElevatedButton(
                   onPressed: () async {
                     Get.back();
-                    controller.openChooseEventActivity(index);
+                    controller.openSelfAllListActivity(model.id!);
                   },
                   text: StringConstants.cont,
                   wantContentSizeButton: true,

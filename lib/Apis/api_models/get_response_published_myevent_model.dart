@@ -6,11 +6,13 @@ class PublishMyEventModel {
   PublishMyEventModel({this.result, this.message, this.status});
 
   PublishMyEventModel.fromJson(Map<String, dynamic> json) {
-    if (json['result'] != null) {
+    if (json['status'] != '0') {
       result = <PublishMyEventResult>[];
       json['result'].forEach((v) {
         result!.add(PublishMyEventResult.fromJson(v));
       });
+    } else {
+      result = [];
     }
     message = json['message'];
     status = json['status'];
@@ -47,21 +49,21 @@ class PublishMyEventResult {
 
   PublishMyEventResult(
       {this.id,
-        this.userId,
-        this.name,
-        this.style,
-        this.description,
-        this.image,
-        this.fromDate,
-        this.toDate,
-        this.fromTime,
-        this.minAge,
-        this.maxAge,
-        this.points,
-        this.entranceCost,
-        this.qrCode,
-        this.status,
-        this.dateTime});
+      this.userId,
+      this.name,
+      this.style,
+      this.description,
+      this.image,
+      this.fromDate,
+      this.toDate,
+      this.fromTime,
+      this.minAge,
+      this.maxAge,
+      this.points,
+      this.entranceCost,
+      this.qrCode,
+      this.status,
+      this.dateTime});
 
   PublishMyEventResult.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -103,4 +105,3 @@ class PublishMyEventResult {
     return data;
   }
 }
-

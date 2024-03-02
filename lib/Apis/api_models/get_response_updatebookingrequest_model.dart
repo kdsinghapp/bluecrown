@@ -1,19 +1,14 @@
-class GetBookingRequestModel {
-  List<GetBookingRequest>? result;
+class UpdateBookingRequestModel {
+  UpdateBookingRequestResult? result;
   String? message;
   String? status;
 
-  GetBookingRequestModel({this.result, this.message, this.status});
+  UpdateBookingRequestModel({this.result, this.message, this.status});
 
-  GetBookingRequestModel.fromJson(Map<String, dynamic> json) {
-    if (json['status'] != '0') {
-      result = <GetBookingRequest>[];
-      json['result'].forEach((v) {
-        result!.add(GetBookingRequest.fromJson(v));
-      });
-    } else {
-      result = [];
-    }
+  UpdateBookingRequestModel.fromJson(Map<String, dynamic> json) {
+    result = json['result'] != null
+        ? UpdateBookingRequestResult.fromJson(json['result'])
+        : null;
     message = json['message'];
     status = json['status'];
   }
@@ -21,7 +16,7 @@ class GetBookingRequestModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (result != null) {
-      data['result'] = result!.map((v) => v.toJson()).toList();
+      data['result'] = result!.toJson();
     }
     data['message'] = message;
     data['status'] = status;
@@ -29,7 +24,7 @@ class GetBookingRequestModel {
   }
 }
 
-class GetBookingRequest {
+class UpdateBookingRequestResult {
   String? id;
   String? eventId;
   String? clubId;
@@ -40,14 +35,8 @@ class GetBookingRequest {
   String? status;
   String? dateTime;
   String? type;
-  String? eventName;
-  String? description;
-  String? eventStyle;
-  String? eventDate;
-  String? eventTime;
-  String? eventImage;
 
-  GetBookingRequest(
+  UpdateBookingRequestResult(
       {this.id,
       this.eventId,
       this.clubId,
@@ -57,15 +46,9 @@ class GetBookingRequest {
       this.totalPeople,
       this.status,
       this.dateTime,
-      this.type,
-      this.eventName,
-      this.description,
-      this.eventStyle,
-      this.eventDate,
-      this.eventTime,
-      this.eventImage});
+      this.type});
 
-  GetBookingRequest.fromJson(Map<String, dynamic> json) {
+  UpdateBookingRequestResult.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     eventId = json['event_id'];
     clubId = json['club_id'];
@@ -76,12 +59,6 @@ class GetBookingRequest {
     status = json['status'];
     dateTime = json['date_time'];
     type = json['type'];
-    eventName = json['event_name'];
-    description = json['description'];
-    eventStyle = json['event_style'];
-    eventDate = json['event_date'];
-    eventTime = json['event_time'];
-    eventImage = json['event_image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -96,12 +73,6 @@ class GetBookingRequest {
     data['status'] = status;
     data['date_time'] = dateTime;
     data['type'] = type;
-    data['event_name'] = eventName;
-    data['description'] = description;
-    data['event_style'] = eventStyle;
-    data['event_date'] = eventDate;
-    data['event_time'] = eventTime;
-    data['event_image'] = eventImage;
     return data;
   }
 }

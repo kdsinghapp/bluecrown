@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'dart:convert';
 
 import 'package:bluecrown/Apis/api_models/get_addpurchaseevent_model.dart';
 import 'package:bluecrown/Apis/api_models/get_clubpurchaseduser_model.dart';
@@ -26,15 +25,14 @@ import 'package:bluecrown/Apis/api_models/get_response_mypurchasingevents_model.
 import 'package:bluecrown/Apis/api_models/get_response_privacypolicy_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_published_myevent_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_termscondition_model.dart';
+import 'package:bluecrown/Apis/api_models/get_response_updatebookingrequest_model.dart';
 import 'package:bluecrown/Apis/api_models/get_response_updateclubrequest_model.dart';
 import 'package:bluecrown/Apis/api_models/get_usercategory_model.dart';
 import 'package:bluecrown/Apis/api_models/get_walletbyclubid_model.dart';
+import 'package:http/http.dart' as http;
 
 import '../../Common/http_methods.dart';
 import '../api_constants/api_url_constants.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
 import '../api_models/get_response_category_model.dart';
 import '../api_models/get_response_friendsrequest_model.dart';
 import '../api_models/get_response_hangjacket_model.dart';
@@ -60,6 +58,7 @@ class ApiMethods {
     }
     return null;
   }
+
   /// Vip User Registration Api Calling .....
   static Future<SignUpModel?> submitVipUserRegistrationForm({
     void Function(int)? checkResponse,
@@ -132,6 +131,7 @@ class ApiMethods {
     }
     return null;
   }
+
   ///GetProfile Api Calling.....
   static Future<LogInModel?> getProfileApi({
     void Function(int)? checkResponse,
@@ -150,6 +150,7 @@ class ApiMethods {
     }
     return null;
   }
+
   ///Forgot Password Api Calling.....
   static Future<ForgotPasswordModel?> forgotPasswordApi({
     void Function(int)? checkResponse,
@@ -163,7 +164,8 @@ class ApiMethods {
     );
 
     if (response != null) {
-      forgotPasswordModel = ForgotPasswordModel.fromJson(jsonDecode(response.body));
+      forgotPasswordModel =
+          ForgotPasswordModel.fromJson(jsonDecode(response.body));
       return forgotPasswordModel;
     }
     return null;
@@ -201,11 +203,13 @@ class ApiMethods {
     );
 
     if (response != null) {
-      commonResponseModel = CommonResponseModel.fromJson(jsonDecode(response.body));
+      commonResponseModel =
+          CommonResponseModel.fromJson(jsonDecode(response.body));
       return commonResponseModel;
     }
     return null;
   }
+
   ///Create Change Password Api Calling.....
   static Future<CommonResponseModel?> changePasswordApi({
     void Function(int)? checkResponse,
@@ -219,7 +223,8 @@ class ApiMethods {
     );
 
     if (response != null) {
-      commonResponseModel = CommonResponseModel.fromJson(jsonDecode(response.body));
+      commonResponseModel =
+          CommonResponseModel.fromJson(jsonDecode(response.body));
       return commonResponseModel;
     }
     return null;
@@ -243,6 +248,7 @@ class ApiMethods {
     }
     return null;
   }
+
   ///Submit  Friends Request Api Calling.....
   static Future<FriendsRequestModel?> submitFriendsRequestApi({
     void Function(int)? checkResponse,
@@ -256,11 +262,13 @@ class ApiMethods {
     );
 
     if (response != null) {
-      friendsRequestModel = FriendsRequestModel.fromJson(jsonDecode(response.body));
+      friendsRequestModel =
+          FriendsRequestModel.fromJson(jsonDecode(response.body));
       return friendsRequestModel;
     }
     return null;
   }
+
   ///Submit Add Costomer Api Calling.....
   static Future<AddCostomerModel?> submitAddCostomerApi({
     void Function(int)? checkResponse,
@@ -289,12 +297,12 @@ class ApiMethods {
       checkResponse: checkResponse,
     );
     if (response != null) {
-      categoryModel =
-          CategoryModel.fromJson(jsonDecode(response.body));
+      categoryModel = CategoryModel.fromJson(jsonDecode(response.body));
       return categoryModel;
     }
     return null;
   }
+
   /// Get User Category  Api Calling .....
   static Future<GetUserCategoryModel?> getUserCategoryApi(
       {void Function(int)? checkResponse}) async {
@@ -312,9 +320,13 @@ class ApiMethods {
   }
 
   /// Get Parties by category id  Api Calling .....
-  static Future<GetPartiesModel?> getPartiesApi(
-      {void Function(int)? checkResponse,required String userId,required String categoryId,}) async {
-    String url='${ApiUrlConstants.endPointOfGetParties}?user_id=$userId&category_id=$categoryId';
+  static Future<GetPartiesModel?> getPartiesApi({
+    void Function(int)? checkResponse,
+    required String userId,
+    required String categoryId,
+  }) async {
+    String url =
+        '${ApiUrlConstants.endPointOfGetParties}?user_id=$userId&category_id=$categoryId';
     GetPartiesModel? getPartiesModel;
     http.Response? response = await MyHttp.getMethod(
       url: url,
@@ -327,38 +339,45 @@ class ApiMethods {
     return null;
   }
 
-
   /// Get Get Event booking Request by club id  Api Calling .....
   static Future<GetBookingRequestModel?> getEventBookingRequestApi(
-      {void Function(int)? checkResponse,required String clubId,required String type}) async {
-    String url='${ApiUrlConstants.endPointOfGetBookingRequest}?club_id=$clubId&type=$type';
+      {void Function(int)? checkResponse,
+      required String clubId,
+      required String type}) async {
+    String url =
+        '${ApiUrlConstants.endPointOfGetBookingRequest}?club_id=$clubId&type=$type';
     GetBookingRequestModel? getBookingRequestModel;
     http.Response? response = await MyHttp.getMethod(
       url: url,
       checkResponse: checkResponse,
     );
     if (response != null) {
-      getBookingRequestModel = GetBookingRequestModel.fromJson(jsonDecode(response.body));
-      return getBookingRequestModel;
-    }
-    return null;
-  }
-  /// Get My booking Events by user id  Api Calling .....
-  static Future<GetBookingRequestModel?> getMyBookingEventsApi(
-      {void Function(int)? checkResponse,required String userId}) async {
-    String url='${ApiUrlConstants.endPointOfGetMyBookingEventRequest}?user_id=$userId';
-    GetBookingRequestModel? getBookingRequestModel;
-    http.Response? response = await MyHttp.getMethod(
-      url: url,
-      checkResponse: checkResponse,
-    );
-    if (response != null) {
-      getBookingRequestModel = GetBookingRequestModel.fromJson(jsonDecode(response.body));
+      getBookingRequestModel =
+          GetBookingRequestModel.fromJson(jsonDecode(response.body));
       return getBookingRequestModel;
     }
     return null;
   }
 
+  /// Get My booking Events by user id  Api Calling .....
+  static Future<GetBookingRequestModel?> getMyBookingEventsApi(
+      {void Function(int)? checkResponse,
+      required String userId,
+      required String status}) async {
+    String url =
+        '${ApiUrlConstants.endPointOfGetMyBookingEventRequest}?user_id=$userId&status=$status';
+    GetBookingRequestModel? getBookingRequestModel;
+    http.Response? response = await MyHttp.getMethod(
+      url: url,
+      checkResponse: checkResponse,
+    );
+    if (response != null) {
+      getBookingRequestModel =
+          GetBookingRequestModel.fromJson(jsonDecode(response.body));
+      return getBookingRequestModel;
+    }
+    return null;
+  }
 
   /// Get Privacy Policy  Api Calling .....
   static Future<PrivacyPolicyModel?> getPrivacyPolicyApi(
@@ -376,7 +395,6 @@ class ApiMethods {
     return null;
   }
 
-
   /// Get TermsConditions Api Calling .....
   static Future<TermsConditionModel?> getTermsConditionsApi(
       {void Function(int)? checkResponse}) async {
@@ -386,12 +404,12 @@ class ApiMethods {
       checkResponse: checkResponse,
     );
     if (response != null) {
-      termsConditionModel = TermsConditionModel.fromJson(jsonDecode(response.body));
+      termsConditionModel =
+          TermsConditionModel.fromJson(jsonDecode(response.body));
       return termsConditionModel;
     }
     return null;
   }
-
 
   /// Get Club List Api Calling .....
   static Future<GetClubsModel?> getClubListApi(
@@ -425,60 +443,73 @@ class ApiMethods {
 
   /// Get Published my event Api Calling .....
   static Future<PublishMyEventModel?> getPublishMyEventApi(
-      {void Function(int)? checkResponse,required String userId}) async {
-    String apiURL='${ApiUrlConstants.endPointOfGetMyPublishEvent}?user_id=$userId';
+      {void Function(int)? checkResponse, required String userId}) async {
+    String apiURL =
+        '${ApiUrlConstants.endPointOfGetMyPublishEvent}?user_id=$userId';
     PublishMyEventModel? publishMyEventModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiURL,
       checkResponse: checkResponse,
     );
     if (response != null) {
-      publishMyEventModel = PublishMyEventModel.fromJson(jsonDecode(response.body));
+      publishMyEventModel =
+          PublishMyEventModel.fromJson(jsonDecode(response.body));
       return publishMyEventModel;
     }
     return null;
   }
+
   /// Get Notifications Api Calling .....
   static Future<GetNotificationModel?> getNotificationApi(
-      {void Function(int)? checkResponse,required String userId}) async {
-    String apiURL='${ApiUrlConstants.endPointOfGetNotification}?user_id=$userId';
+      {void Function(int)? checkResponse, required String userId}) async {
+    String apiURL =
+        '${ApiUrlConstants.endPointOfGetNotification}?user_id=$userId';
     GetNotificationModel? getNotificationModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiURL,
       checkResponse: checkResponse,
     );
     if (response != null) {
-      getNotificationModel = GetNotificationModel.fromJson(jsonDecode(response.body));
+      getNotificationModel =
+          GetNotificationModel.fromJson(jsonDecode(response.body));
       return getNotificationModel;
     }
     return null;
   }
+
   /// Get Wallet Amount According Club id Api Calling .....
   static Future<GetClubWalletModel?> getWalletAmountAccordingClubIdApi(
-      {void Function(int)? checkResponse,required String userId,required String clubId}) async {
-    String apiURL='${ApiUrlConstants.endPointOfGetWalletByClubIdUserId}?user_id=$userId&club_id=$clubId';
+      {void Function(int)? checkResponse,
+      required String userId,
+      required String clubId}) async {
+    String apiURL =
+        '${ApiUrlConstants.endPointOfGetWalletByClubIdUserId}?user_id=$userId&club_id=$clubId';
     GetClubWalletModel? getClubWalletModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiURL,
       checkResponse: checkResponse,
     );
     if (response != null) {
-      getClubWalletModel = GetClubWalletModel.fromJson(jsonDecode(response.body));
+      getClubWalletModel =
+          GetClubWalletModel.fromJson(jsonDecode(response.body));
       return getClubWalletModel;
     }
     return null;
   }
+
   /// Get Club Hanger Api Calling .....
   static Future<GetClubHangerModel?> getClubHangerApi(
-      {void Function(int)? checkResponse,required String clubId}) async {
-    String apiURL='${ApiUrlConstants.endPointOfGetClubHanger}?club_id=$clubId';
+      {void Function(int)? checkResponse, required String clubId}) async {
+    String apiURL =
+        '${ApiUrlConstants.endPointOfGetClubHanger}?club_id=$clubId';
     GetClubHangerModel? getClubHangerModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiURL,
       checkResponse: checkResponse,
     );
     if (response != null) {
-      getClubHangerModel = GetClubHangerModel.fromJson(jsonDecode(response.body));
+      getClubHangerModel =
+          GetClubHangerModel.fromJson(jsonDecode(response.body));
       return getClubHangerModel;
     }
     return null;
@@ -502,6 +533,7 @@ class ApiMethods {
     }
     return null;
   }
+
   ///Update My Published Events Api Calling.....
   static Future<AddEventModel?> updateMyPublishEventsApi({
     void Function(int)? checkResponse,
@@ -540,6 +572,28 @@ class ApiMethods {
     return null;
   }
 
+  /// Club /Host Update Booking Request Api Calling.....
+  static Future<UpdateBookingRequestModel?> updateBookingRequestApi(
+      {void Function(int)? checkResponse,
+      required String clubId,
+      required String bookingId,
+      required String status}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfChangeBookEventStatus}?club_id=$clubId&book_event_id=$bookingId&status=$status';
+    UpdateBookingRequestModel? updateBookingRequestModel;
+    http.Response? response = await MyHttp.getMethod(
+      url: apiUrl,
+      checkResponse: checkResponse,
+    );
+
+    if (response != null) {
+      updateBookingRequestModel =
+          UpdateBookingRequestModel.fromJson(jsonDecode(response.body));
+      return updateBookingRequestModel;
+    }
+    return null;
+  }
+
   ///Update Club Request Api Calling.....
   static Future<UpdateClubRequestModel?> updateClubRequestApi({
     void Function(int)? checkResponse,
@@ -553,7 +607,8 @@ class ApiMethods {
     );
 
     if (response != null) {
-      updateClubRequestModel = UpdateClubRequestModel.fromJson(jsonDecode(response.body));
+      updateClubRequestModel =
+          UpdateClubRequestModel.fromJson(jsonDecode(response.body));
       return updateClubRequestModel;
     }
     return null;
@@ -577,6 +632,7 @@ class ApiMethods {
     }
     return null;
   }
+
   ///Add Hanger List Api Calling.....
   static Future<AddHangerModel?> addHangerListApi({
     void Function(int)? checkResponse,
@@ -609,17 +665,18 @@ class ApiMethods {
     );
 
     if (response != null) {
-      addPurchaseEventModel = AddPurchaseEventModel.fromJson(jsonDecode(response.body));
+      addPurchaseEventModel =
+          AddPurchaseEventModel.fromJson(jsonDecode(response.body));
       return addPurchaseEventModel;
     }
     return null;
   }
+
   ///Get My Purchasing Events Api Calling.....
-  static Future<GetMyPurchasingEventModel?> getMyPurchasingEventsApi({
-    void Function(int)? checkResponse,
-    required String userId
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfGetPurchaseEvent}?user_id=$userId';
+  static Future<GetMyPurchasingEventModel?> getMyPurchasingEventsApi(
+      {void Function(int)? checkResponse, required String userId}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfGetPurchaseEvent}?user_id=$userId';
     GetMyPurchasingEventModel? getMyPurchasingEventModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiUrl,
@@ -627,17 +684,18 @@ class ApiMethods {
     );
 
     if (response != null) {
-      getMyPurchasingEventModel = GetMyPurchasingEventModel.fromJson(jsonDecode(response.body));
+      getMyPurchasingEventModel =
+          GetMyPurchasingEventModel.fromJson(jsonDecode(response.body));
       return getMyPurchasingEventModel;
     }
     return null;
   }
+
   ///Get My Wallet History Api Calling.....
-  static Future<MyWalletHistoryModel?> myWalletHistoryApi({
-    void Function(int)? checkResponse,
-    required String userId
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfGetWalletHistory}?user_id=$userId';
+  static Future<MyWalletHistoryModel?> myWalletHistoryApi(
+      {void Function(int)? checkResponse, required String userId}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfGetWalletHistory}?user_id=$userId';
     MyWalletHistoryModel? myWalletHistoryModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiUrl,
@@ -645,19 +703,18 @@ class ApiMethods {
     );
 
     if (response != null) {
-      myWalletHistoryModel = MyWalletHistoryModel.fromJson(jsonDecode(response.body));
+      myWalletHistoryModel =
+          MyWalletHistoryModel.fromJson(jsonDecode(response.body));
       return myWalletHistoryModel;
     }
     return null;
   }
 
-
   ///Get Club Purchased User List Api Calling.....
-  static Future<ClubPurchasedUserModel?> getClubPurchasedUserApi({
-    void Function(int)? checkResponse,
-    required String clubId
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfClubPurchasedUserList}?club_id=$clubId';
+  static Future<ClubPurchasedUserModel?> getClubPurchasedUserApi(
+      {void Function(int)? checkResponse, required String clubId}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfClubPurchasedUserList}?club_id=$clubId';
     ClubPurchasedUserModel? clubPurchasedUserModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiUrl,
@@ -665,18 +722,17 @@ class ApiMethods {
     );
 
     if (response != null) {
-      clubPurchasedUserModel = ClubPurchasedUserModel.fromJson(jsonDecode(response.body));
+      clubPurchasedUserModel =
+          ClubPurchasedUserModel.fromJson(jsonDecode(response.body));
       return clubPurchasedUserModel;
     }
     return null;
   }
 
   ///Get All Club Request Api Calling.....
-  static Future<GetClubRequestModel?> getAllClubRequestApi({
-    void Function(int)? checkResponse,
-    required String type
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfGetClubRequest}?request=$type';
+  static Future<GetClubRequestModel?> getAllClubRequestApi(
+      {void Function(int)? checkResponse, required String type}) async {
+    String apiUrl = '${ApiUrlConstants.endPointOfGetClubRequest}?request=$type';
     GetClubRequestModel? getClubRequestModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiUrl,
@@ -684,18 +740,18 @@ class ApiMethods {
     );
 
     if (response != null) {
-      getClubRequestModel = GetClubRequestModel.fromJson(jsonDecode(response.body));
+      getClubRequestModel =
+          GetClubRequestModel.fromJson(jsonDecode(response.body));
       return getClubRequestModel;
     }
     return null;
   }
 
   ///Get Current Jacket Api Calling.....
-  static Future<GetCurrentJacketModel?> getCurrentJacketApi({
-    void Function(int)? checkResponse,
-    required String userId
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfGetCurrentJacket}?user_id=$userId';
+  static Future<GetCurrentJacketModel?> getCurrentJacketApi(
+      {void Function(int)? checkResponse, required String userId}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfGetCurrentJacket}?user_id=$userId';
     GetCurrentJacketModel? getCurrentJacketModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiUrl,
@@ -703,46 +759,54 @@ class ApiMethods {
     );
 
     if (response != null) {
-      getCurrentJacketModel = GetCurrentJacketModel.fromJson(jsonDecode(response.body));
+      getCurrentJacketModel =
+          GetCurrentJacketModel.fromJson(jsonDecode(response.body));
       return getCurrentJacketModel;
     }
     return null;
   }
 
   ///Get Wardrobe Users List Api Calling.....
-  static Future<GetWardrobeUsersModel?> getWardrobeUsersListApi({
-    void Function(int)? checkResponse,
-    required String clubId,required String checkOut
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfGetWardrobeUserList}?club_id=$clubId&checkout=$checkOut';
+  static Future<GetWardrobeUsersModel?> getWardrobeUsersListApi(
+      {void Function(int)? checkResponse,
+      required String clubId,
+      required String checkOut}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfGetWardrobeUserList}?club_id=$clubId&checkout=$checkOut';
     GetWardrobeUsersModel? getWardrobeUsersModel;
-    http.Response? response = await MyHttp.getMethod(url: apiUrl, checkResponse: checkResponse,);
+    http.Response? response = await MyHttp.getMethod(
+      url: apiUrl,
+      checkResponse: checkResponse,
+    );
     if (response != null) {
-      getWardrobeUsersModel = GetWardrobeUsersModel.fromJson(jsonDecode(response.body));
+      getWardrobeUsersModel =
+          GetWardrobeUsersModel.fromJson(jsonDecode(response.body));
       return getWardrobeUsersModel;
     }
     return null;
   }
+
   ///Get Clubs Friends List Api Calling.....
-  static Future<GetClubFriendModel?> getClubsFriendListApi({
-    void Function(int)? checkResponse,
-    required String clubId
-  }) async {
-    String apiUrl='${ApiUrlConstants.endPointOfGetClubFriendList}?user_id=$clubId';
+  static Future<GetClubFriendModel?> getClubsFriendListApi(
+      {void Function(int)? checkResponse, required String clubId}) async {
+    String apiUrl =
+        '${ApiUrlConstants.endPointOfGetClubFriendList}?user_id=$clubId';
     GetClubFriendModel? getClubFriendModel;
     http.Response? response = await MyHttp.getMethod(
       url: apiUrl,
       checkResponse: checkResponse,
     );
     if (response != null) {
-      getClubFriendModel = GetClubFriendModel.fromJson(jsonDecode(response.body));
+      getClubFriendModel =
+          GetClubFriendModel.fromJson(jsonDecode(response.body));
       return getClubFriendModel;
     }
     return null;
   }
+
   ///How to earn more points Api Calling.....
-  static Future<HowToEarnPointsModel?> howToEarnPointsApi({
-    void Function(int)? checkResponse}) async {
+  static Future<HowToEarnPointsModel?> howToEarnPointsApi(
+      {void Function(int)? checkResponse}) async {
     HowToEarnPointsModel? howToEarnPointsModel;
     http.Response? response = await MyHttp.getMethod(
       url: ApiUrlConstants.endPointOfGetEarnMorePoint,
@@ -750,11 +814,10 @@ class ApiMethods {
     );
 
     if (response != null) {
-      howToEarnPointsModel = HowToEarnPointsModel.fromJson(jsonDecode(response.body));
+      howToEarnPointsModel =
+          HowToEarnPointsModel.fromJson(jsonDecode(response.body));
       return howToEarnPointsModel;
     }
     return null;
   }
-
-
 }

@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:math';
 
-import 'package:bluecrown/Activity/ResetPasswordActivity.dart';
 import 'package:bluecrown/Activity/SignUpActivity.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,11 +13,11 @@ import '../Apis/api_models/get_response_login_model.dart';
 import '../common/ShowToast.dart';
 import '../constant/stringconstants.dart';
 
-class LoginController extends GetxController{
-  RxInt count=0.obs;
-  RxBool showProgressbar=false.obs;
-  TextEditingController emailPhoneController=TextEditingController();
-  TextEditingController passwordController=TextEditingController();
+class LoginController extends GetxController {
+  RxInt count = 0.obs;
+  RxBool showProgressbar = false.obs;
+  TextEditingController emailPhoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   FocusNode focusEmail = FocusNode();
   FocusNode focusPassword = FocusNode();
@@ -63,49 +61,50 @@ class LoginController extends GetxController{
     hide.value = !hide.value;
   }
 
-
-  goToSignUpActivity(){
-    Get.to(()=>const SignUpActivity());
+  goToSignUpActivity() {
+    Get.to(() => const SignUpActivity());
   }
 
-  openResetPasswordActivity(){
+  openResetPasswordActivity() {
     Get.toNamed('/resetPasswordActivity');
   }
 
-  openHomeActivity(){
-    Get.to(()=> const MainActivity());
+  openHomeActivity() {
+    Get.to(() => const MainActivity());
   }
 
-  changeProgressbarStatus(bool value){
-    showProgressbar.value=value;
+  changeProgressbarStatus(bool value) {
+    showProgressbar.value = value;
   }
-
 
   Future<void> callingSubmitLogInForm() async {
-    bodyParamsForSubmitLoginForm = {
-      ApiKeyConstants.email: emailPhoneController.text.toString(),
-      ApiKeyConstants.password: passwordController.text.toString(),
-      ApiKeyConstants.registerId:await FirebaseMessaging.instance.getToken(),
-
-    };
-    print("bodyParamsForGetEducationLevel:::::$bodyParamsForSubmitLoginForm");
     try {
-      logInModel = await ApiMethods.logInApi(
-          bodyParams: bodyParamsForSubmitLoginForm);
+      bodyParamsForSubmitLoginForm = {
+        ApiKeyConstants.email: emailPhoneController.text.toString(),
+        ApiKeyConstants.password: passwordController.text.toString(),
+        ApiKeyConstants.registerId:
+            await FirebaseMessaging.instance.getToken() ?? '89ukjkjahakjlfal',
+      };
+      print("bodyParamsForGetEducationLevel:::::$bodyParamsForSubmitLoginForm");
+
+      logInModel =
+          await ApiMethods.logInApi(bodyParams: bodyParamsForSubmitLoginForm);
       if (logInModel!.status != "0" ?? false) {
+        print("LOGIN Type:- ${logInModel!.result!.type}");
         saveDataSharedPreference(logInModel);
       } else {
         print("LogIn Failed....");
         showToastMessage(logInModel!.message!);
       }
-    }catch(e){
-      print('Error:-'+e.toString());
+    } catch (e) {
+      print('Error:-' + e.toString());
       showToastMessage('Server issue please try again after some time ');
     }
     changeProgressbarStatus(false);
   }
-  saveDataSharedPreference(LogInModel? userdata) async{
-    sharedPreferences=await SharedPreferences.getInstance();
+
+  saveDataSharedPreference(LogInModel? userdata) async {
+    sharedPreferences = await SharedPreferences.getInstance();
     showToastMessage("Successfully Login Complete");
     print("LogIn Successfully complete...");
     String userDataString = jsonEncode(userdata);
@@ -113,7 +112,9 @@ class LoginController extends GetxController{
     changeProgressbarStatus(false);
     //openHomeActivity();
     Get.offAndToNamed('/mainActivity');
-
   }
 
+  // openForAdmin() {
+  //   Get.off(() => const AdminClubsRequestActivity());
+  // }
 }

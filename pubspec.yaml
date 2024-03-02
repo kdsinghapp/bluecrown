@@ -63,8 +63,8 @@ dependencies:
   getwidget: ^4.0.0
   #Circular percentage...
   percent_indicator: ^4.2.3
-  #Firebase notificatins...
-  firebase_messaging: ^14.6.5
+  #Firebase notificatins...14.6.5
+  firebase_messaging: ^14.7.15
   firebase_core: ^2.15.0
   flutter_local_notifications: ^15.1.0+1
 

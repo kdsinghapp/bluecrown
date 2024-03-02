@@ -1,4 +1,4 @@
-import 'package:bluecrown/Controller/AddListController.dart';
+import 'package:bluecrown/Controller/SelfAddListController.dart';
 import 'package:bluecrown/Tool/Color.dart';
 import 'package:bluecrown/Tool/MyTextStyle.dart';
 import 'package:bluecrown/common/CommonWidget.dart';
@@ -10,15 +10,15 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../common/validations.dart';
 
-class AddListActivity extends StatefulWidget {
-  const AddListActivity({super.key});
+class SelfAddListActivity extends StatefulWidget {
+  const SelfAddListActivity({super.key});
 
   @override
-  State<AddListActivity> createState() => _AddEventListState();
+  State<SelfAddListActivity> createState() => _SelfAddListState();
 }
 
-class _AddEventListState extends State<AddListActivity> {
-  AddListController controller = Get.put(AddListController());
+class _SelfAddListState extends State<SelfAddListActivity> {
+  SelfAddListController controller = Get.put(SelfAddListController());
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,11 @@ class _AddEventListState extends State<AddListActivity> {
                       onPressed: () {
                         if (controller.formKey.currentState!.validate()) {
                           controller.changeProgressbarStatus(true);
-                          controller.callingBookEventForm('Normal');
+                          if (controller.typeIndex.value == 0) {
+                            controller.callingBookEventForm('Normal');
+                          } else {
+                            controller.callingBookEventForm('Vip');
+                          }
                         }
                       },
                       text: StringConstants.addList,
@@ -121,6 +125,80 @@ class _AddEventListState extends State<AddListActivity> {
                 ),
                 SizedBox(
                   height: 15.px,
+                ),
+                Obx(() => Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.typeIndex.value = 0;
+                            },
+                            child: Container(
+                              height: 40,
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border:
+                                      Border.all(color: primaryColor, width: 1),
+                                  color: controller.typeIndex.value == 0
+                                      ? primaryColor
+                                      : primary3Color),
+                              child: Text(
+                                'Normal List',
+                                style: controller.typeIndex.value == 0
+                                    ? MyTextStyle.titleStyle16bw
+                                    : MyTextStyle.titleStyle16bb,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.typeIndex.value = 1;
+                            },
+                            child: Container(
+                              height: 40,
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border:
+                                      Border.all(color: primaryColor, width: 1),
+                                  color: controller.typeIndex.value == 1
+                                      ? primaryColor
+                                      : primary3Color),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Vip List',
+                                    style: controller.typeIndex.value == 1
+                                        ? MyTextStyle.titleStyle16bw
+                                        : MyTextStyle.titleStyle16bb,
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Icon(
+                                    Icons.star,
+                                    size: 20,
+                                    color: controller.typeIndex.value == 1
+                                        ? primary3Color
+                                        : primaryColor,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 20,
                 ),
 
                 CommonWidget.commonTextField(
