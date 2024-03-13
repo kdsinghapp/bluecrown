@@ -74,7 +74,7 @@ class _ChooseEventState extends State<ChooseEventActivity> {
               onPressed: () {
                 controller.openAddEventListActivity();
               },
-              text: StringConstants.addList,
+              text: StringConstants.sendRequest,
               buttonMargin: EdgeInsets.only(
                 top: 5.px,
               ),

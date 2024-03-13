@@ -102,7 +102,7 @@ class _AddEventListState extends State<AddListActivity> {
                           controller.callingBookEventForm('Normal');
                         }
                       },
-                      text: StringConstants.addList,
+                      text: StringConstants.sendRequest,
                       buttonMargin: EdgeInsets.all(
                         10.px,
                       ),
@@ -116,7 +116,7 @@ class _AddEventListState extends State<AddListActivity> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  StringConstants.addList,
+                  StringConstants.sendRequest,
                   style: MyTextStyle.titleStyle24bb,
                 ),
                 SizedBox(

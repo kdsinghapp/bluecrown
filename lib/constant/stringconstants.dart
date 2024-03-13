@@ -115,4 +115,16 @@ class StringConstants {
       'Collect points on every entrance visit at one of the clubs in the Samla app';
   static const String test =
       'At the nightclub you are always greeted by at least two dance floors with different music styles, three bars and a wonderful atmosphere where something fun is always happening! The DJ raises the mood at 10 p.m. and soon after that the party starts.';
+  static const String terms1 =
+      'Inform users about the collection and processing of location data, email addresses, contact numbers, phone device IDs for notifications, and any access to phone storage.';
+  static const String terms2 =
+      'Ensure a lawful basis for processing all collected data, including location, email, contact numbers, phone device IDs, and storage access.';
+  static const String terms3 =
+      'Implement robust security measures to protect all collected data, including encryption and access controls, especially for sensitive data like contact numbers';
+  static const String terms4 =
+      'Respect user rights regarding their data, including the right to access, rectification, and erasure of personal information, such as email addresses and contact numbers.';
+  static const String terms5 =
+      'Establish data processing agreements with third-party processors, ensuring compliance with GDPR regulations for all types of data collected and processed.';
+  static const String terms6 =
+      'Ensure that any international transfers of user data, including email addresses and contact numbers, comply with GDPR requirements, such as implementing appropriate safeguards.';
 }
